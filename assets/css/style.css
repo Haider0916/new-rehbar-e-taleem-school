@@ -1,0 +1,420 @@
+/* basic reset and typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* make layout fill viewport so footer can stick to bottom */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: #fafafa;
+    /* slight off‑white */
+    color: #222;
+    scroll-behavior: smooth;
+    /* anchor links scroll nicely */
+}
+
+header {
+    background: #003366;
+    /* darker blue, more professional */
+    color: #fff;
+    padding: 1rem;
+    border-bottom: 4px solid #d4af37;
+    /* gold accent */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* header inner container to align logo + nav */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* hero banner (place a file named hero.jpg in assets/img or update URL) */
+.hero {
+    background: url('../assets/img/hero.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1rem;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+}
+
+/* legacy .card styles removed; sections now span full width */
+/* .card { ... } */
+
+/* slider container */
+.slider {
+    position: relative;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.slider img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.slider-button.prev {
+    left: 0.5rem;
+}
+
+.slider-button.next {
+    right: 0.5rem;
+}
+
+.logo img {
+    max-height: 50px;
+    width: auto;
+    display: block;
+}
+
+/* tagline next to logo */
+.logo-tagline {
+    display: flex;
+    align-items: center;
+}
+
+.tagline {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #ffd700;
+    /* gold colour for contrast */
+    font-style: italic;
+}
+
+/* keep heading for screen readers; hide visually */
+.header-title {
+    position: absolute;
+    left: -9999px;
+}
+
+nav a {
+    color: white;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 1rem;
+    flex: 1;
+    /* no max-width: sections may span the full browser width; individual
+       blocks are still padded for readability */
+}
+
+
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: #e0e0e0;
+    /* no margin-top, flex layout handles spacing */
+}
+footer .footer-info {
+    margin-bottom: 0.5rem;
+}
+footer .footer-info span {
+    display: block;
+    line-height: 1.4;
+}
+
+/* generic section styling for single‑page layout */
+section {
+    margin-bottom: 2rem;
+}
+
+/* achievements bullet list */
+#achievements ul {
+    list-style: disc inside;
+    margin: 1rem 0;
+}
+
+section:nth-of-type(odd) {
+    background: #fff;
+    /* white */
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+section:nth-of-type(even) {
+    background: #f0f6ff;
+    /* very light blue tint */
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+/* contact area above footer */
+#contact {
+    background: #f2f2f2;
+    /* lighter shade than footer */
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* gallery styles */
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item small {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #fff;
+    /* will be on dark background, adjust if necessary */
+}
+
+/* facility items: image + text pairs */
+.facility-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.facility-item img {
+    width: 400px;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.facility-text {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    .facility-item {
+        flex-direction: column;
+    }
+
+    .facility-item img {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* staff contact cards */
+.contact-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+}
+
+/* simple contact form styling */
+.contact-form {
+    /* max-width: 500px; */
+    margin: 1rem auto;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #003366;
+    box-shadow: 0 0 2px rgba(0, 51, 102, 0.4);
+}
+
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+
+/* layout improvements */
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    background: #003366;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 200px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+    background: #002244;
+    transform: translateY(-1px);
+}
+
+.contact-form button:active {
+    transform: translateY(0);
+}
+
+#gallery img {
+    width: 100%;
+    height: 150px;
+    /* fixed height to keep grid tidy; landscape photos (4:3 or wider) work best, portraits will be cropped top/bottom */
+    object-fit: cover;
+    /* crop to fill */
+    display: block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+/* top information bar above header */
+.info-bar {
+    background: #003366;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0.4rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* life/gallery section with optional background image */
+.gallery-section {
+    background: url('../assets/img/gallery-bg.jpg') center/cover no-repeat;
+    position: relative;
+    color: #fff;
+    padding: 4rem 1rem;
+}
+
+.gallery-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.gallery-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* responsive full-width map container */
+.map-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* responsive tweaks */
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        margin: .5rem 0;
+    }
+}
