@@ -61,7 +61,17 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* explicit height and flex centering */
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+}
+
+.hero-text {
+    /* keep relative for z-index already set */
 }
 
 .hero-text {
@@ -277,8 +287,54 @@ footer .footer-columns {
 /* generic section styling for single‑page layout */
 section {
     /* margin-bottom: 2rem; */
+    /* margin-bottom: 2rem; */
 }
 
+/* achievements stats grid */
+.stats-grid {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    /* text-align: center; */
+    /* margin: 3rem 0; */
+}
+
+.stat-item {
+    /* flex: 1 1 200px; */
+    margin: 1rem;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 0.5rem;
+}
+
+.stat-img {
+    display: block;
+    width: 60px;
+    height: auto;
+    margin: 0 auto 0.5rem;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #003366;
+    margin-left: 9px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    color: #333;
+}
+
+/* legacy bullet list removed */
 /* achievements stats grid */
 .stats-grid {
     display: flex;
