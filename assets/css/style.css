@@ -30,7 +30,7 @@ body {
 }
 
 header {
-    background: #003366;
+    background: #02315B;
     /* darker blue, more professional */
     color: #fff;
     padding: 1rem;
@@ -50,48 +50,37 @@ header {
     margin: auto;
 }
 
-/* hero banner (place a file named hero.jpg in assets/img or update URL) */
+/* HERO */
 .hero {
-    background: url('../assets/img/hero.jpg') center/cover no-repeat;
-    color: #fff;
-    text-align: center;
-    /* explicit height and flex centering */
-    height: 60vh;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* explicit height and flex centering */
-    height: 60vh;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
+    width: 100%;
 }
 
-.hero-text {
-    /* keep relative for z-index already set */
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.hero-text {
-    /* keep relative for z-index already set */
-}
-
+/* overlay */
 .hero::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.4);
-    pointer-events: none;
 }
 
+/* text on top of image */
 .hero-text {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    color: #fff;
     z-index: 1;
+    padding: 20px;
 }
 
 .hero-text h2 {
@@ -143,8 +132,8 @@ header {
 }
 
 .logo img {
-    max-height: 50px;
-    width: auto;
+    /* max-height: 50px; */
+    /* width: auto; */
     display: block;
 }
 
@@ -188,7 +177,7 @@ main {
 
 
 footer {
-    background: #003366;
+    background: #02315B;
     color: #fff;
     padding: 2rem 1rem;
     /* columns will handle alignment */
@@ -310,7 +299,7 @@ section {
 
 .stat-icon {
     font-size: 2rem;
-    color: #003366;
+    color: #02315B;
     margin-bottom: 0.5rem;
 }
 
@@ -324,7 +313,7 @@ section {
 .stat-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #003366;
+    color: #02315B;
     margin-left: 9px;
 }
 
@@ -355,7 +344,7 @@ section {
 
 .stat-icon {
     font-size: 2rem;
-    color: #003366;
+    color: #02315B;
     margin-bottom: 0.5rem;
 }
 
@@ -369,7 +358,7 @@ section {
 .stat-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #003366;
+    color: #02315B;
     margin-left: 9px;
 }
 
@@ -438,6 +427,10 @@ section:nth-of-type(even) {
 }
 
 /* gallery styles */
+:root {
+    --gallery-scale: 1;
+}
+
 #gallery {
     display: flex;
     flex-wrap: wrap;
@@ -460,27 +453,116 @@ section:nth-of-type(even) {
     pointer-events: none;
 }
 
-@media (max-width: 1000px) {
-    #gallery {
-        /* grid-template-columns: repeat(3, 1fr); */
-    }
-}
-
-@media (max-width: 600px) {
-    #gallery {
-        /* grid-template-columns: repeat(2, 1fr); */
-    }
-}
-
 #gallery img {
     position: relative;
     z-index: 1;
-    max-width: 100%;
-    height: auto;
+    height: 150px;
     border: 2px solid #ccc;
     border-radius: 4px;
-    /* allow natural aspect ratio */
-    flex: 1 1 auto;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Desktop view: Enforce exact widths (285 105 315 285 105 310 280 100 100 310 375 375 375 ...) */
+#gallery img:nth-child(1) {
+    width: calc(285px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(2) {
+    width: calc(105px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(3) {
+    width: calc(315px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(4) {
+    width: calc(285px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(5) {
+    width: calc(105px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(6) {
+    width: calc(310px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(7) {
+    width: calc(280px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(8) {
+    width: calc(100px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(9) {
+    width: calc(100px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(10) {
+    width: calc(310px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(11) {
+    width: calc(375px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(12) {
+    width: calc(375px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(13) {
+    width: calc(375px * var(--gallery-scale));
+}
+
+/* For 14th and 15th images if used */
+#gallery img:nth-child(14) {
+    width: calc(285px * var(--gallery-scale));
+}
+
+#gallery img:nth-child(15) {
+    width: calc(310px * var(--gallery-scale));
+}
+
+/* Tablet view: 80% of desktop widths */
+@media (max-width: 1024px) {
+    :root {
+        --gallery-scale: 0.8;
+    }
+
+    #gallery {
+        gap: 0.8rem;
+    }
+}
+
+/* Smaller tablet/medium view: 60% of desktop widths */
+@media (max-width: 768px) {
+    :root {
+        --gallery-scale: 0.6;
+    }
+
+    #gallery {
+        gap: 0.6rem;
+    }
+}
+
+/* Mobile view: Single column layout */
+@media (max-width: 600px) {
+    :root {
+        --gallery-scale: 1;
+    }
+
+    #gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #gallery img {
+        width: 100% !important;
+        max-width: 100%;
+    }
 }
 
 .gallery-item {
@@ -607,7 +689,7 @@ section:nth-of-type(even) {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #003366;
+    border-color: #02315B;
     box-shadow: 0 0 2px rgba(0, 51, 102, 0.4);
 }
 
@@ -665,7 +747,7 @@ section:nth-of-type(even) {
 
 /* top information bar above header */
 .info-bar {
-    background: #003366;
+    background: #02315B;
     color: #fff;
     font-size: 0.9rem;
     text-align: center;
