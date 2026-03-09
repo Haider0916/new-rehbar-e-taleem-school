@@ -137,6 +137,11 @@ header {
     .hero-text p {
         font-size: 0.65rem;
     }
+
+    .stats-grid {
+        display: flex;
+        flex-wrap: wrap !important
+    }
 }
 
 /* legacy .card styles removed; sections now span full width */
