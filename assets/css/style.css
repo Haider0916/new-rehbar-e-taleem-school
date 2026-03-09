@@ -9,6 +9,7 @@
 html,
 body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -90,6 +91,52 @@ header {
 
 .hero-text p {
     font-size: 1.2rem;
+}
+
+/* Hero responsive text */
+@media (max-width: 1024px) {
+    .hero-text h2 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-text h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-text p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-text {
+        padding: 10px;
+    }
+
+    .hero-text h2 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .hero-text p {
+        font-size: 0.65rem;
+    }
 }
 
 /* legacy .card styles removed; sections now span full width */
@@ -368,17 +415,509 @@ section {
     color: #333;
 }
 
+/* Achievements responsive text */
+@media (max-width: 1024px) {
+    .stat-icon {
+        font-size: 1.6rem;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stat-icon {
+        font-size: 1.4rem;
+    }
+
+    .stat-number {
+        font-size: 1.1rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .stat-icon {
+        font-size: 1.2rem;
+    }
+
+    .stat-number {
+        font-size: 0.95rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+}
+
 /* legacy bullet list removed */
 #achievements ul {
     display: none;
 }
 
+/* Admission section styling */
 #admissions {
-    padding: 3rem;
+    background: #ffffff;
+    padding: 3rem 1rem;
+}
+
+#admissions h2 {
+    font-size: 2.2rem;
+    color: #02315B;
+    margin-bottom: 1rem;
+}
+
+#admissions>.container>p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+.admission-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.admission-item {
+    background: #f8fafb;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #02315B;
+}
+
+.admission-item h3 {
+    font-size: 1.3rem;
+    color: #02315B;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admission-item h3 i {
+    color: #d4af37;
+    font-size: 1.5rem;
+}
+
+.admission-item p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.75rem 0;
+    line-height: 1.6;
+}
+
+.admission-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.admission-item li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.admission-item li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.admission-item .note {
+    background: #fff5e6;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+/* Admission forms section */
+.admission-forms {
+    background: linear-gradient(135deg, #f0f6ff 0%, #fafbfc 100%);
+    padding: 2.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.admission-forms h3 {
+    font-size: 1.5rem;
+    color: #02315B;
+    margin-bottom: 0.5rem;
+}
+
+.admission-forms>p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.form-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #02315B;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.form-link i {
+    font-size: 3rem;
+    color: #d4af37;
+    margin-bottom: 0.75rem;
+}
+
+.form-link span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.form-link small {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.form-link:hover {
+    border-color: #02315B;
+    box-shadow: 0 8px 20px rgba(2, 49, 91, 0.15);
+    transform: translateY(-4px);
+}
+
+/* Admission assessment section */
+.admission-assessment {
+    background: #f8fafb;
+    padding: 2.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #02315B;
+    margin-top: 2rem;
+}
+
+.admission-assessment h3 {
+    font-size: 1.3rem;
+    color: #02315B;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admission-assessment h3 i {
+    color: #d4af37;
+    font-size: 1.5rem;
+}
+
+.admission-assessment p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Modal styling */
+.doc-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+    overscroll-behavior: contain;
+}
+
+.doc-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: scale(0.8) translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 12px;
+    max-width: 90vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-image-container {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #f5f5f5;
+}
+
+.modal-image-container img {
+    max-width: 100%;
+    max-height: 450px;
+    max-width: 500px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .modal-image-container img {
+        max-height: 350px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+
+    .modal-image-container {
+        padding: 1rem;
+    }
+
+    .modal-image-container img {
+        max-height: 300px;
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content {
+        max-width: 98vw;
+        max-height: 80vh;
+    }
+
+    .modal-image-container {
+        padding: 0.75rem;
+    }
+
+    .modal-image-container img {
+        max-height: 250px;
+        max-width: 90%;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ffffff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #02315B;
+    transition: all 0.2s ease;
+    z-index: 2001;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    transform: rotate(90deg);
+}
+
+.modal-footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-message {
+    text-align: center;
+    max-width: 500px;
+}
+
+.modal-message p {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.modal-message strong {
+    color: #02315B;
+    font-weight: 600;
+}
+
+/* Tablet view */
+@media (max-width: 768px) {
+    .admission-box {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .admission-forms {
+        padding: 1.5rem;
+    }
+
+    .admission-assessment {
+        padding: 1.5rem;
+    }
+
+    .admission-assessment h3 {
+        font-size: 1.1rem;
+    }
+
+    .admission-assessment p {
+        font-size: 0.9rem;
+    }
+
+    .form-links {
+        gap: 1rem;
+    }
+
+    .form-link {
+        min-width: 150px;
+        padding: 1.5rem;
+    }
+
+    .form-link i {
+        font-size: 2.5rem;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .modal-image-container {
+        padding: 1rem;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+    #admissions {
+        padding: 2rem 1rem;
+    }
+
+    #admissions h2 {
+        font-size: 1.75rem;
+    }
+
+    #faculty h2,
+    #contact h2,
+    .contact-form h2,
+    .gallery-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .admission-item {
+        padding: 1.5rem;
+    }
+
+    .admission-item h3 {
+        font-size: 1.15rem;
+    }
+
+    .form-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-link {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .admission-assessment {
+        padding: 1.5rem;
+    }
+
+    .admission-assessment h3 {
+        font-size: 1.05rem;
+    }
+
+    .admission-assessment p {
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        max-width: 98%;
+        max-height: 98%;
+    }
+
+    .modal-image-container {
+        padding: 0.5rem;
+    }
+
+    .modal-image-container img {
+        max-height: 80vh;
+    }
 }
 
 #faculty {
     padding: 3rem;
+}
+
+#faculty h2 {
+    font-size: 2.2rem;
+    color: #02315B;
+    margin-bottom: 1rem;
 }
 
 section:nth-of-type(odd) {
@@ -418,7 +957,8 @@ section:nth-of-type(even) {
 }
 
 #contact h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    color: #02315B;
     margin-bottom: 0.5rem;
 }
 
@@ -513,7 +1053,12 @@ section:nth-of-type(even) {
 @media (max-width: 400px) {
     #gallery {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0.5rem;
+        padding: 0.75rem 0;
+    }
+
+    #gallery video {
+        max-height: 300px;
     }
 }
 
@@ -527,7 +1072,6 @@ section:nth-of-type(even) {
 #gallery video:hover {
     box-shadow: 0 4px 12px rgba(2, 49, 91, 0.15);
     transform: scale(1.01);
-}
 }
 
 .gallery-item {
@@ -592,7 +1136,10 @@ section:nth-of-type(even) {
 }
 
 .contact-form h2 {
+    font-size: 2.2rem;
+    color: #02315B;
     margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .contact-form .lead {
@@ -776,7 +1323,7 @@ section:nth-of-type(even) {
     }
 
     .gallery-content h2 {
-        font-size: 1.85rem;
+        font-size: 1.75rem;
         margin-bottom: 0.5rem;
     }
 
@@ -794,7 +1341,7 @@ section:nth-of-type(even) {
     }
 
     .gallery-content h2 {
-        font-size: 1.6rem;
+        font-size: 1.75rem;
         margin-bottom: 0.5rem;
     }
 
@@ -836,4 +1383,9 @@ section:nth-of-type(even) {
     .contact-form .form-group.half {
         flex: 1 1 100%;
     }
+}
+
+
+body p:not(footer p, .hero p) {
+    color: #555555;
 }

@@ -90,30 +90,77 @@
         <section id="admissions">
             <div class="container">
                 <h2>Admissions</h2>
-                <p>To apply, download the <a href="assets/docs/fee-structure.pdf" target="_blank">fee structure
-                        (PDF)</a>
-                    and the admission form. Fill out the form completely with accurate information and attach all
-                    required
-                    documents (see below).</p>
-                <p>Applications are accepted during school hours (8 am–3 pm) at the main office. You can also email
-                    scanned
-                    copies to <a href="mailto:newrehbaretaleem@gmail.com">newrehbaretaleem@gmail.com</a> if an email
-                    address is available.</p>
-                <h3>Documents Required</h3>
-                <ul>
-                    <li>Birth certificate</li>
-                    <li>Previous school records (if any)</li>
-                    <li>Photographs (4 recent passport-size)</li>
-                    <li>Proof of residence (utility bill, rent agreement)</li>
-                    <li>Parent/guardian identification</li>
-                </ul>
-                <p class="note">Note: keep photocopies – originals will be returned after verification.</p>
-                <h3>Key Dates &amp; Fees</h3>
-                <p>Entrance examinations (if any) are held on the first Saturday of March. Admission decisions are
-                    mailed by
-                    April 15. List any important deadlines or fee payment instructions here.</p>
+                <p>We welcome families from our community to visit our school and learn more about our programs.
+                    Admissions are open year-round during our office hours.</p>
+
+                <div class="admission-box">
+                    <div class="admission-item">
+                        <h3><i class="fas fa-clock"></i> Visit Us</h3>
+                        <p><strong>Office Hours:</strong> monday to saturday, 9:00 AM – 2:00 PM</p>
+                        <p>Come to our main office to meet our team, explore the campus, and discuss enrollment for your
+                            child.</p>
+                        <p><strong>Phone:</strong> <a href="tel:+92214571577">021-3457-1577</a></p>
+                    </div>
+
+                    <div class="admission-item">
+                        <h3><i class="fas fa-file-alt"></i> Required Documents</h3>
+                        <ul>
+                            <li>Birth certificate</li>
+                            <li>Previous school records (if any)</li>
+                            <li>Photographs (4 recent passport-size)</li>
+                            <li>Proof of residence (utility bill, rent agreement)</li>
+                            <li>Parent/guardian identification</li>
+                        </ul>
+                        <p class="note">Note: Please bring original documents. Photocopies will be made during your
+                            visit.</p>
+                    </div>
+                </div>
+
+                <div class="admission-forms">
+                    <h3>Preview Form Samples</h3>
+                    <p>Get a preview of our admission form and fee schedule below. To receive official copies and
+                        complete your enrollment, please visit our office during admission hours.</p>
+                    <div class="form-links">
+                        <a href="assets/docs/admission_form.jpeg" class="form-link" data-type="admission">
+                            <i class="fas fa-image"></i>
+                            <span>Admission Form</span>
+                            <small>Click to preview</small>
+                        </a>
+                        <a href="assets/docs/fee_schedule.jpeg" class="form-link" data-type="fee">
+                            <i class="fas fa-image"></i>
+                            <span>Fee Schedule</span>
+                            <small>Click to preview</small>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="admission-assessment">
+                    <h3><i class="fas fa-tasks"></i> Admission Assessment</h3>
+                    <p>As part of our comprehensive admissions process, we conduct academic assessments for prospective
+                        students. These evaluations help us understand your child's current academic level and learning
+                        requirements, enabling us to place them in the appropriate grade and provide personalized
+                        support. The assessment is designed to be fair and supportive, focusing on identifying strengths
+                        and areas for growth. Our faculty will discuss the results with you to ensure a smooth
+                        transition into our school community.</p>
+                </div>
             </div>
         </section>
+
+        <!-- Document Preview Modal -->
+        <div id="docModal" class="doc-modal">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <div class="modal-content">
+                <div class="modal-image-container">
+                    <img id="modalImage" src="" alt="Form preview" />
+                </div>
+                <div class="modal-footer">
+                    <div class="modal-message">
+                        <p>To receive your official copy of this form, please <strong>visit our office during admission
+                                hours</strong> (monday to saturday, 9:00 AM – 2:00 PM) or contact us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section id="faculty">
             <div class="container">
@@ -298,14 +345,13 @@
                         <li><a href="#admissions">Admissions</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#achievements">Achievements</a></li>
-                        <li><a href="#">Download Admission Form</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Come Find Us</h3>
                     <p>📍 A/80 Alfalah Society, Shah Faisal Colony, Karachi 75230</p>
                     <p>✉️ <a href="mailto:newrehbaretaleem@gmail.com">newrehbaretaleem@gmail.com</a></p>
-                    <p>📞 021-34571577</p>
+                    <p> ☏ 021-34571577</p>
                 </div>
             </div>
             <p class="footer-copy">&copy; 2026 Rehbar e Taleem School. All rights reserved.</p>
@@ -313,6 +359,43 @@
     </footer>
 
 
+    <script>
+        // Form preview modal functionality
+        const modal = document.getElementById('docModal');
+        const formLinks = document.querySelectorAll('.form-link');
+        const modalClose = document.querySelector('.modal-close');
+        const modalImage = document.getElementById('modalImage');
+
+        formLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const imagePath = link.getAttribute('href');
+                modalImage.src = imagePath;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
